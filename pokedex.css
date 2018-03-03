@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    width: 80%;
+    margin: 0 auto;
+    border: solid red 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.pokemon{
+    width: 60%;
+    margin: 10px;
+    display: inline-block;
+}
+h1{
+    margin: 20px 0 10px 0;
+}
+.pokedex{
+    margin: 15px;
+    width: 190px;
+    height: 400px;
+    display: inline-block;
+    vertical-align: top;
+    background-color: black;
+    border-top: solid #DEDEDE 25px;
+    border-left: solid #DEDEDE 25px;
+    border-right: solid #DEDEDE 25px;
+    border-bottom: solid #DEDEDE 50px;
+    text-align: center;
+    color: white;
+}
+h5{
+    text-align: left;
+    margin: 15px 0 15px 10px;
+}
+ul{
+    list-style-position: inside;
+    text-align: initial;
+    margin-left: 30px;
+    font-size: 10pt;
+}
+p{
+    text-align: left;
+    margin-left: 10px;
+    font-size: 10pt;
+}
+#loader{
+    margin-top: 20px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #F1D62B;
+    border-right: 16px solid #51AE5F;
+    border-left: 16px solid #28AAFD;
+    border-bottom: 16px solid red;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

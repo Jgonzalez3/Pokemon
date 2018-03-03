@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="pokedex.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>        
+        $(document).ready(function(){
+            
+            function LoadPokemon(){
+                var sprite = "";
+                for(var i = 1; i<152; i++){
+                    sprite += "<img id='"+i+"' src='https://pokeapi.co/media/img/"+i+".png'>"
+                }
+                return sprite;
+            }
+            $('.pokemon').append(LoadPokemon());
+            $(document).on("click",'img',function(){
+                $('.pokedex').html('<img id="loader">');
+                var pokepic =$(this).attr('src');
+                var pokenum = $(this).attr('id');
+                console.log(pokepic);
+                console.log(pokenum);
+                $.get("https://pokeapi.co/api/v2/pokemon/"+pokenum+"/", function(res){
+                    $('.pokedex').html("<h1>"+res["name"]+"</h1><img src='"+pokepic+"'><h5>Types</h5><ul></ul>");
+                    var poketype1 = "", poketype2 = "";
+                    for(var i=0; i<res.types.length; i++){
+                        if(i == 0){
+                            poketype1 = res.types[i].type["name"];
+                            $('ul').append("<li>"+poketype1+"</li>")
+                        }
+                        else if(i == 1){
+                            poketype2 = res.types[i].type["name"];
+                        $('ul').append("<li>"+poketype2+"</li>");
+                        }
+                    }
+                    console.log(poketype1);
+                    console.log(poketype2);
+                    $('.pokedex').append("<h5>Height</h5><p>"+res["height"]+"</p><h5>Weight</h5><p>"+res["weight"]+"</p>");
+                    console.log(res);
+                    console.log(res["name"]);
+                    console.log(res["id"]);
+                    console.log(res["weight"]);
+                    console.log(res["height"]);
+                }, 'json')
+                return false;
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="pokemon"></div>
+        <div class="pokedex">
+            <img id="pokedeximage" src="" alt="">
+        </div>
+        <form>
+            <input type="hidden" id="pokenum" value="">
+            <input id="ogpokemon" type="hidden" value="Click to display All Original Pokemon">
+        </form>
+    </div>
+</body>
+</html>
